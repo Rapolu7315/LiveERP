@@ -42,13 +42,50 @@ public class DriverScript extends FunctionsLibrary {
 					{
 						FunctionsLibrary.openurl(driver);
 					}
+					else if(ObjectType.equalsIgnoreCase("waitForElements"))
+					{
+						FunctionsLibrary.waitForElement(driver, LocatorType, LocatorValue, TestData);
+					}
+					else if(ObjectType.equalsIgnoreCase("typeAction"))
+					{
+						FunctionsLibrary.typeAction(driver, LocatorType, LocatorValue, TestData);
+					}
+					else if(ObjectType.equalsIgnoreCase("clickAction"))
+					{
+						FunctionsLibrary.clickAction(driver, LocatorType, LocatorValue);
+					}
+					else if(ObjectType.equalsIgnoreCase("validateTitle"))
+					{
+						FunctionsLibrary.validateTitle(driver, TestData);
+					}
+					else if(ObjectType.equalsIgnoreCase("closeBrowser"))
+					{
+						FunctionsLibrary.closeBrowser(driver);
+					}
+					//write as status into pass cell TCModule
+					xl.setcelldata(TCModule, j, 5, "pass", outputpath);
+					Module_Status="True";
+					
 				}
 			catch(Exception e)
 					{
 				System.out.println(e.getMessage());
+				//write as status into fail cell TCModule
+				xl.setcelldata(TCModule, j, 5, "Fail", outputpath);
+				Module_Status="Fail";
+				
 					}
-			}
-			}
+				if(TCModule.equalsIgnoreCase("True"))
+					{
+					xl.setcelldata("MasterTestCases", i, 3, "pass", outputpath);
+					}
+				else
+				{
+					xl.setcelldata("MasterTestCases", i, 3, "Fail", outputpath);
+				}
+					}
+					}
+			
 			else
 		{
 			//write a block which are flag to N
@@ -57,4 +94,5 @@ public class DriverScript extends FunctionsLibrary {
 		
 	}
 	}
+}
 		
