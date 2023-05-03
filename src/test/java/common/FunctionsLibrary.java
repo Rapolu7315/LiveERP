@@ -23,7 +23,7 @@ public class FunctionsLibrary {
 	public static WebDriver StartBrowser() throws Throwable
 	{
 		conpro = new Properties();
-		conpro.load(new FileInputStream("D:\\eclipse\\workspace\\ERP_Hybrid\\PropertyFile"));
+		conpro.load(new FileInputStream("./PropertyFile/Environment.properties"));
 		if(conpro.getProperty("Browser").equalsIgnoreCase("chrome"))
 		{
 			driver = new ChromeDriver();
